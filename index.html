@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>pomodoro.html</title>
+  </head>
+
+  <body>
+    <h1>Click the button to start the pomodoro cycle</h1>
+    <button>Start</button>
+    <div></div>
+
+    <script>
+      function startPomodoro() {
+        for(let i = 1; i > 5; i++) { // to make the whole program run 5 times
+          
+        }
+      }
+
+      function start25MinWork() {
+        for(let k = 0; k <= 24; k++) { // to run the countdown for the minute timer
+          start60SecCountdown(); // start 60 seconds countdown
+          if(seconds == 0) {
+            minutes -= 1;
+          }
+        }
+      } 
+
+      function start60SecCountdown() { // start 60 seconds countdown
+        console.log(minutes + " " + seconds);
+        seconds--;
+        if(seconds >= 0) {
+          setTimeout(start60SecCountdown, 1000);
+        }
+      } // end function
+
+      function startLongRest() { // 20mins rest
+      }
+
+ 
+      let button = document.querySelector("button");
+      let countdown = document.querySelector("div");
+      let seconds = 59;
+      let minutes = 25;
+      
+      start25MinWork();
+    </script>
+  </body>
+</html>
