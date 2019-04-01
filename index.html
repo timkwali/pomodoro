@@ -18,18 +18,27 @@
       }
 
       function start25MinWork() {
-        for(let k = 0; k <= 24; k++) { // to run the countdown for the minute timer
-          start60SecCountdown(); // start 60 seconds countdown
-          if(seconds == 0) {
-            minutes -= 1;
-          }
+        minutes--;
+        seconds = 60;
+        start60SecCountdown();
+        if(minutes > 0) {
+          setTimeout(start25MinWork, 60000);
         }
       } 
 
       function start60SecCountdown() { // start 60 seconds countdown
-        console.log(minutes + " " + seconds);
         seconds--;
-        if(seconds >= 0) {
+         
+        if(seconds < 10) {
+          seconds = "0".concat(seconds);
+        }
+        if(minutes < 10) {
+          minutes = "0".concat(minutes);
+        }
+
+        console.log(minutes + " " + seconds);
+
+        if(seconds > 0) {
           setTimeout(start60SecCountdown, 1000);
         }
       } // end function
@@ -40,7 +49,7 @@
  
       let button = document.querySelector("button");
       let countdown = document.querySelector("div");
-      let seconds = 59;
+      let seconds = 60;
       let minutes = 25;
       
       start25MinWork();
