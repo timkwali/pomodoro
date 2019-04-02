@@ -8,51 +8,53 @@
   <body>
     <h1>Click the button to start the pomodoro cycle</h1>
     <button>Start</button>
-    <div></div>
+    <div id = "output">
+    </div>
 
     <script>
       function startPomodoro() {
-        for(let i = 1; i > 5; i++) { // to make the whole program run 5 times
-          
-        }
+        minutes = 2;
+        start1MinCountdown();
       }
-
-      function start25MinWork() {
-        minutes--;
-        seconds = 60;
-        start60SecCountdown();
-        if(minutes > 0) {
-          setTimeout(start25MinWork, 60000);
-        }
-      } 
 
       function start60SecCountdown() { // start 60 seconds countdown
         seconds--;
-         
         if(seconds < 10) {
           seconds = "0".concat(seconds);
         }
+        console.log(`${minutes} Minutes ${seconds} Seconds`);
+        output.innerHTML = " ";
         if(minutes < 10) {
-          minutes = "0".concat(minutes);
-        }
+          output.innerHTML = `0${minutes} Minutes ${seconds} Seconds`;
 
-        console.log(minutes + " " + seconds);
+        } else{
+          output.innerHTML = `${minutes} Minutes ${seconds} Seconds`;
+        }
 
         if(seconds > 0) {
           setTimeout(start60SecCountdown, 1000);
         }
       } // end function
-
-      function startLongRest() { // 20mins rest
-      }
-
  
+      function start1MinCountdown() {
+        minutes--;
+        seconds = 60;
+        start60SecCountdown();
+        if(minutes > 0) {
+          setTimeout(start1MinCountdown, 60000);
+        }
+      } 
+
+      function playSound() {
+        var audio = new Audio("pop.mp3");
+        audio.play();
+      }
+      
       let button = document.querySelector("button");
       let countdown = document.querySelector("div");
-      let seconds = 60;
-      let minutes = 25;
+      let output = document.getElementById("output");
       
-      start25MinWork();
+      startPomodoro();
     </script>
   </body>
 </html>
