@@ -6,15 +6,44 @@
   </head>
 
   <body>
-    <h1>Click the button to start the pomodoro cycle</h1>
+    <h1>Pomodoro</h1>
+    <h3>Click the button to start the pomodoro cycle</h3>
     <button>Start</button>
     <div id = "output">
     </div>
 
     <script>
       function startPomodoro() {
-        minutes = 2;
-        start1MinCountdown();
+        counter = 0; // create counter to track number
+                    // of times work will be done.
+        startWork();
+        setTimeout( () => {
+          h3.innerHTML = " ";
+          h3.innerHTML = "Rest for 15 Minutes";
+          minutes = 3;
+          start1MinCountdown();
+        }, 540000);
+        setInterval(startPomodoro, 720000)
+      }
+
+      function startWork() {
+        counter++;
+        console.log(counter);
+        
+        h3.innerHTML = " ";
+        h3.innerHTML = "Work for 25 Minutes";
+        minutes = 1;
+        start1MinCountdown(); // Work for 25 minutes
+
+        var rest = setTimeout( () => { // Rest for 3 minutes
+          h3.innerHTML = " ";
+          h3.innerHTML = "Rest now for 3 Minutes";
+          minutes = 2;
+          start1MinCountdown();
+        }, 60000);
+
+        if(counter < 3)
+          setTimeout(startWork, 180000);
       }
 
       function start60SecCountdown() { // start 60 seconds countdown
@@ -22,14 +51,13 @@
         if(seconds < 10) {
           seconds = "0".concat(seconds);
         }
-        console.log(`${minutes} Minutes ${seconds} Seconds`);
         output.innerHTML = " ";
         if(minutes < 10) {
           output.innerHTML = `0${minutes} Minutes ${seconds} Seconds`;
-
         } else{
           output.innerHTML = `${minutes} Minutes ${seconds} Seconds`;
         }
+        console.log(`${minutes} Minutes ${seconds} Seconds`);
 
         if(seconds > 0) {
           setTimeout(start60SecCountdown, 1000);
@@ -45,14 +73,18 @@
         }
       } 
 
-      function playSound() {
+      function playAlarm() {
         var audio = new Audio("pop.mp3");
         audio.play();
       }
       
+    
       let button = document.querySelector("button");
       let countdown = document.querySelector("div");
       let output = document.getElementById("output");
+      let h3 = document.querySelector("h3");
+      let counter = 0; // create counter to track number 
+                      // of times work will be done.
       
       startPomodoro();
     </script>
