@@ -1,0 +1,45 @@
+/** Pomodoro CSS **/
+
+body {
+  background-color: brown;
+  text-align: center;
+}
+
+h1 {
+  color: ghostwhite;
+  text-align: center;
+}
+
+h3 {
+  color: burlywood;
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  height: 25px;
+  width: 90px;
+  margin: 5px;
+  background-color: burlywood;
+  border: 1px solid midnightblue;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(39, 38, 38);
+  font-family: cursive;
+  font-size: 15px;
+}
+
+button:hover {
+  box-shadow: 3px 3px 3px rgb(39, 38, 38);
+  border: none;
+  color: whitesmoke;
+}
+
+p {
+  color: burlywood;
+  text-align: center;
+}
+
+#output {
+  color: ghostwhite;
+  text-align: center;
+}
