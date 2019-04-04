@@ -11,15 +11,19 @@
     <button>Start</button>
     <div id = "output">
     </div>
+    <p id = "counter"></p>
+    <p id = "cycle"></p>
 
     <script>
       function startPomodoro() {
+        cycle++; 
+        cyc.innerHTML = `Pomodoro Cycles: ${cycle}`;
         counter = 0; // create counter to track number
                     // of times work will be done.
         startWork();
         setTimeout( () => {
           h3.innerHTML = " ";
-          h3.innerHTML = "Rest for 15 Minutes";
+          h3.innerHTML = "Do long-rest for 15 Minutes";
           minutes = 3;
           start1MinCountdown();
         }, 540000);
@@ -28,6 +32,7 @@
 
       function startWork() {
         counter++;
+        count.innerHTML = `Work Counter: ${counter}`;
         console.log(counter);
         
         h3.innerHTML = " ";
@@ -83,8 +88,11 @@
       let countdown = document.querySelector("div");
       let output = document.getElementById("output");
       let h3 = document.querySelector("h3");
-      let counter = 0; // create counter to track number 
-                      // of times work will be done.
+      let count = document.getElementById("counter");
+      let cyc = document.getElementById("cycle");
+      let cycle = 0; // To track number of pomodoros done
+      let counter = 0; // Counter to track number 
+                      // of work-shortRest cycles
       
       startPomodoro();
     </script>
